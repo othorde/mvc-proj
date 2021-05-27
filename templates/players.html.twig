@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+    {% block body %}
+
+    <div class = "text">
+        <h1>Yatzy</h1>
+    <p> Man kan spela 1 till 4 personer.</p>
+    <p>Skriv in namnen på de spelare som ska vara med. </p>
+    <p> Tryck sedan på spela yatzy för att spela spelet! </p>
+
+    </div>
+    <br><br>
+    <form action="./create/yatzy" method="POST" id="form1">
+        <label for="spelare1"></label>
+        <input type="text" class="spelare1" name="player1" placeholder="Ingen spelare"><br><br>
+        <label for="spelare1"></label>
+        <input type="text" class="spelare2" name="player2" placeholder="Ingen spelare"><br><br>
+        <label for="spelare3"></label>
+        <input type="text" class="spelare3" name="player3" placeholder="Ingen spelare"><br><br>
+        <label for="spelare4"></label>
+        <input type="text" class="spelare4" name="player4" placeholder="Ingen spelare">
+        </form>
+        <br><br>
+        <button type="submit" form="form1" value="Submit">Spela Yatzy!</button>
+
+
+    {% endblock %}
+

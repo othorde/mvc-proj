@@ -14,47 +14,83 @@ use function Mos\Functions\{
 
 class YatzyGame extends DiceHand
 {
-    public ?int $sum = 0;
+     public ?int $sum;
     public ?int $whatRound = 0;
+   /*  public ?int $roundValue;  */
+    public ?int $playerTurn = 0;
     public ?int $whatThrow = 0;
-    public ?int $roundValue = 0;
+    public array $arrOfDice;
 
-    public function __construct($nrOfDices)
+    public function __construct($nrOfDices, $sum, $roundValue, $nrOfPlayers)
     {
+        $this->sum = $sum;
+        $this->roundValue = $roundValue;
+        $this->nrOfPlayers = $nrOfPlayers;
+
         parent::__construct($nrOfDices);
     }
 
-    public function whatRound(): int
-    {
-        if (isset($_SESSION["round"])) {
-            $this->whatRound = $_SESSION["round"];
-        } else if (!isset($_SESSION["round"])) {
-            $this->whatRound = 0;
+    public function setThrow($number): void {
+        
+       
+        if ($this->getThrow() === 3) {
+            $this->whatThrow = 0;
+        } else {
+            $this->whatThrow = $this->whatThrow + 1;
         }
-        return $this->whatRound;
-    }
-
-    public function whatThrow(): int
-    {
-        if (isset($_SESSION["throws"])) {
-            $this->whatThrow = $_SESSION["throws"];
-        } else if (!isset($_SESSION["throws"])) {
+        if ($number == 0) {
             $this->whatThrow = 0;
         }
+    }
+
+    public function getThrow(): int {
         return $this->whatThrow;
     }
 
-    public function newRoundOrNot(): string
-    {
-        $messThrowDice = "";
-        echo($this->whatThrow);
+    public function setRound($changeRound): void {
+        if ($this->whatThrow % 3 == 0 && $this->whatThrow != 0) {
+            //$this->setThrow(0);
+            $this->whatRound = $this->whatRound + 1;
 
-        if ($this->whatThrow == 3) {
-            echo($this->whatThrow);
-            $messThrowDice = "<b> Kasta om alla tärningar, ny runda! </b>";
+        } if ($changeRound == 1) {
+            $this->whatRound = $this->whatRound + 1;
         }
-        return $messThrowDice;
     }
+
+    public function getRound(): int {
+
+        return $this->whatRound;
+    }
+
+    public function getPlayerTurn(): int {
+        
+        return $this->playerTurn;
+    }
+
+    public function setPlayerTurn($changeRound): void {
+        
+        if ($changeRound == 1) {
+            $this->playerTurn = $this->playerTurn + 1;
+        }
+
+        if ($this->whatThrow % 3 == 0) {
+
+            $this->playerTurn = $this->playerTurn + 1;
+
+        } 
+        if ($this->playerTurn = $this->nrOfPlayers) {
+            $this->playerTurn = 0;
+        }
+    }
+
+    public function getSavedAndOnHandDice(): array {
+        $savedDices = $_SESSION["savedDices"];
+        $valueOnHandNotSaved = $this->getLastRollWithoutSum();
+
+        array_push($this->arrOfDice, $valueOnHandNotSaved, $savedDices);
+        return $this->arrOfDice;
+    }
+
 
     public function savedDices(): array
     {
@@ -65,8 +101,7 @@ class YatzyGame extends DiceHand
                 array_push($savedDices, $value);
                 array_push($savedDicesGraph, "dice-" . strval($value));
             }
-            ?>
-        <?php endforeach;
+        endforeach;
         $_SESSION["NrOfDicesToThrowNextRound"] = 5 - count($savedDices);
         $_SESSION["savedDices"] = $savedDices; //sparar undan arrayn i sessionen så att jag kan ta ut den i forloop i spelet
 
@@ -78,8 +113,8 @@ class YatzyGame extends DiceHand
         $this->roundValue = 0;
         foreach ($_SESSION["savedDices"] as $value) :
             if ($this->whatRound == $value) {
-                $this->roundValue += $value;
-            }
+/*                 $this->roundValue += $value;
+ */            }
         endforeach;
         if ($this->whatThrow == 3) {
             $valueOnHandNotSaved = $this->getLastRollWithoutSum();
@@ -102,25 +137,52 @@ class YatzyGame extends DiceHand
 
     public function returnMess(): string
     {
-        $returnMess = "";
-        if ($this->whatRound == 0) {
-            $returnMess = "Börja spelet";
-        } else if ($this->whatRound == 1) {
-            $returnMess = "Du ska ha ettor";
-        } else if ($this->whatRound == 2) {
-            $returnMess = "Du ska ha tvåor";
-        } else if ($this->whatRound == 3) {
-            $returnMess = "Du ska ha treor";
-        } else if ($this->whatRound == 4) {
-            $returnMess = "Du ska ha fyror";
-        } else if ($this->whatRound == 5) {
-            $returnMess = "Du ska ha femmor";
-        } else if ($this->whatRound == 6) {
-            $returnMess = "Du ska ha sexor";
-        } else if ($this->whatRound == 7) {
-            $returnMess = "Du är klar med spelet";
+        if ($this->getThrow() == 3) {
+            $returnMess = "Nästa spelares tur, spara ditt resultat först. Låt sedan nästa spelare kasta.";
+        } else {
+            $returnMess = "";
         }
         return $returnMess;
     }
-}
 
+    public function getFirstRound(): bool{ /* startar spelet och lägger till i throws */
+
+        if (isset($_SESSION) && $_SESSION["start"] == "start")
+        {
+            echo("START");
+            $_SESSION["start"] = "";
+            return true;
+        }
+        $_SESSION["savedDices"] = "";
+        $_SESSION["NrOfDicesToThrowNextRound"] ="";
+        return false;
+    }
+
+    public function countNrOfDieToThrow(): int { /*räknar hur många tärningar som ska kastas */
+
+        if (empty($_POST)) {
+            $this->nrOfDie2ThrowNext = 5;
+        } else {
+            $this->nrOfDie2ThrowNext = 6 - count($_POST); // 6 = 5 tärningar i arrayn plus "KASTA" därav 6
+        }
+        return $this->nrOfDie2ThrowNext;
+    }
+
+    public function getIfThrow(): bool { /*räknar hur många tärningar som ska kastas */
+
+       if (isset($_POST["kasta"]) && $_POST["kasta"] == "KASTA") {
+           return true;
+       } else {
+        return false;
+       }
+    }
+
+    public function getIfSave(): bool { /*räknar hur många tärningar som ska kastas */
+
+        if (isset($_POST["save"]) && $_POST["save"] == "SPARA RESULTAT") {
+            return true;
+        } else {
+         return false;
+        }
+     }
+}

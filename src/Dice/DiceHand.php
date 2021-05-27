@@ -7,14 +7,6 @@ namespace App\Dice;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
 
-/* use function Mos\Functions\{
-    destroySession,
-    redirectTo,
-    renderView,
-    renderTwigView,
-    sendResponse,
-    url
-}; */
 
 /**
  * Class Dice.

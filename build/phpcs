@@ -1,0 +1,143 @@
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\css\style.css
+----------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+----------------------------------------------------------------------
+  1 | ERROR | [x] Whitespace found at end of line
+ 85 | ERROR | [x] Whitespace found at end of line
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\public\css\style.css
+-----------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+-----------------------------------------------------------------------
+   1 | ERROR | [x] Whitespace found at end of line
+  92 | ERROR | [x] Whitespace found at end of line
+  94 | ERROR | [x] Whitespace found at end of line
+ 102 | ERROR | [x] Whitespace found at end of line
+ 122 | ERROR | [x] Whitespace found at end of line
+ 236 | ERROR | [x] Whitespace found at end of line
+-----------------------------------------------------------------------
+PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\HelloWorldController.php
+------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+------------------------------------------------------------------------------------------
+  15 | ERROR | [x] Whitespace found at end of line
+  16 | ERROR | [x] Whitespace found at end of line
+  20 | ERROR | [x] Whitespace found at end of line
+ 117 | ERROR | [x] Whitespace found at end of line
+ 133 | ERROR | [x] Whitespace found at end of line
+ 140 | ERROR | [x] Expected 1 blank line at end of file; 3 found
+------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php
+-------------------------------------------------------------------------------------
+FOUND 12 ERRORS AFFECTING 11 LINES
+-------------------------------------------------------------------------------------
+  12 | ERROR | [x] Header blocks must be separated by a single blank line
+  45 | ERROR | [x] Whitespace found at end of line
+  49 | ERROR | [x] Expected 1 space(s) after IF keyword; 0 found
+  87 | ERROR | [x] Whitespace found at end of line
+  94 | ERROR | [x] Expected at least 1 space after "="; 0 found
+ 112 | ERROR | [x] Expected at least 1 space before "="; 0 found
+ 123 | ERROR | [x] Expected at least 1 space before "."; 0 found
+ 132 | ERROR | [x] Blank line found at end of control structure
+ 138 | ERROR | [x] Expected at least 1 space after "="; 0 found
+ 178 | ERROR | [x] Opening brace should be on a new line
+ 193 | ERROR | [x] Expected at least 1 space before "."; 0 found
+ 193 | ERROR | [x] Expected at least 1 space after "."; 0 found
+-------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 12 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\DiceHand.php
+------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------
+ 8 | ERROR | [x] Header blocks must be separated by a single blank line
+------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\Players.php
+------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 3 LINES
+------------------------------------------------------------------------------------------
+ 25 | ERROR | [x] Whitespace found at end of line
+ 29 | ERROR | [x] Whitespace found at end of line
+ 30 | ERROR | [x] The closing brace for the class must go on the next line after the body
+------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php
+------------------------------------------------------------------------------------------------------------------------
+FOUND 36 ERRORS AFFECTING 31 LINES
+------------------------------------------------------------------------------------------------------------------------
+  17 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found 5
+  32 | ERROR | [x] Opening brace should be on a new line
+  33 | ERROR | [x] Whitespace found at end of line
+  34 | ERROR | [x] Whitespace found at end of line
+  45 | ERROR | [x] Opening brace should be on a new line
+  49 | ERROR | [x] Opening brace should be on a new line
+  53 | ERROR | [x] Blank line found at end of control structure
+  59 | ERROR | [x] Opening brace should be on a new line
+  64 | ERROR | [x] Opening brace should be on a new line
+  65 | ERROR | [x] Whitespace found at end of line
+  69 | ERROR | [x] Opening brace should be on a new line
+  70 | ERROR | [x] Whitespace found at end of line
+  75 | ERROR | [x] Blank line found at start of control structure
+  78 | ERROR | [x] Blank line found at end of control structure
+  79 | ERROR | [x] Whitespace found at end of line
+  84 | ERROR | [x] Whitespace found at end of line
+  85 | ERROR | [x] Function closing brace must go on the next line following the body; found 2 blank lines before brace
+ 111 | ERROR | [x] Closing brace must be on a line by itself
+ 142 | ERROR | [x] Opening brace should be on a new line
+ 142 | ERROR | [x] Opening brace must be the last content on the line
+ 144 | ERROR | [x] Expected 1 space(s) after closing parenthesis; found newline
+ 151 | ERROR | [x] Expected at least 1 space after "="; 0 found
+ 155 | ERROR | [x] Opening brace should be on a new line
+ 155 | ERROR | [x] Opening brace must be the last content on the line
+ 165 | ERROR | [x] Opening brace should be on a new line
+ 165 | ERROR | [x] Opening brace must be the last content on the line
+ 167 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found 7
+ 168 | ERROR | [x] Line indented incorrectly; expected at least 12 spaces, found 11
+ 169 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found 7
+ 170 | ERROR | [x] Line indented incorrectly; expected at least 12 spaces, found 8
+ 171 | ERROR | [x] Line indented incorrectly; expected 8 spaces, found 7
+ 174 | ERROR | [x] Opening brace should be on a new line
+ 174 | ERROR | [x] Opening brace must be the last content on the line
+ 179 | ERROR | [x] Line indented incorrectly; expected at least 12 spaces, found 9
+ 181 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found 5
+ 181 | ERROR | [x] Closing brace indented incorrectly; expected 4 spaces, found 5
+------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 36 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Repository\YatzyRepository.php
+-------------------------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 3 LINES
+-------------------------------------------------------------------------------------
+ 24 | ERROR | [x] Line indented incorrectly; expected 4 spaces, found 3
+ 25 | ERROR | [x] Opening brace indented incorrectly; expected 3 spaces, found 4
+ 37 | ERROR | [x] Closing brace indented incorrectly; expected 3 spaces, found 4
+-------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 3 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------
+
+Time: 4.31 secs; Memory: 8MB
+

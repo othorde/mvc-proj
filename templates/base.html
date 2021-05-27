@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <meta charset="UTF-8">
+            <link rel="stylesheet" type="text/css" href= "../css/style.css" >
+            <title>{% block title %}{% endblock %} Välkommen</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">        
+        {% endblock %}
+    </head>
+
+    <header>
+        {% block header %}
+        <nav>
+            <a href="{{path('app_yatzy_index')}}"> Home</a> 
+            <a href="{{path('app_yatzy_players')}}"> yatzy</a>     
+        </nav>
+        {% endblock %}
+    </header>
+    
+    <body>
+        {% block body %}
+            <div class="welcometxt"> Välkommen till yatzy! </div>
+
+            {% endblock %}
+
+            <div id="sidebar">
+            {% block sidebar %}{% endblock %}
+            </div>
+            <div id="footer1">
+            {% block footer %}
+            {% include "footer.html.twig" %}
+            {% endblock %}
+    </body>
+</html>

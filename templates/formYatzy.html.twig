@@ -1,0 +1,53 @@
+<div class = "yatzytxt">
+<p> Du har kastat {{whatThrow}} kast denna runda. </p>
+<p> {{returnMess}} {{(nextPlayer)}}</p>
+</div>
+<div class="game"> 
+
+
+<!-- Grafisk visning av tärningarna -->
+<p class = "dice-utf8">
+    
+        {% if graphDice %} 
+            {% for value in graphDice %}
+                <i class=" {{ value }} "></i>
+            {% endfor %}
+        {% endif %}
+</p>
+<!-- checkboxes för tärningar -->
+<div class = "checkbox">
+<form class="form2" action=yatzy method="POST">
+    {% if getLastRoll %} 
+        {% set nameOfValue = 0 %}
+        {% for value in getLastRoll %}
+            {% set nameOfValue = nameOfValue + 1 %}
+            <input type="checkbox" name= {{ nameOfValue }} value = "{{ value }}"></i>
+            {% endfor %}
+
+    {% endif %}
+</div>
+<div class = "savedDices">
+  <!-- Grafisk visning av sparade tärningarna -->
+  <p>Sparade tärningar </p>
+  {% set nameOfValue = 1 %}
+  <p class = "dice-utf8"> 
+    {% for value in savedDicesGraphical %}
+              <i class="{{ value }}"></i>
+              {% set nameOfValue = nameOfValue + 1 %} <!-- för att byta namn på värdet , kan ej ha samma namn -->
+        {% endfor %}
+        {# {{ savedDicesGraphical }} #}
+  </p>
+  <!-- Checkboxes sparade tärningarna -->
+  {% set nameOfValue = 0 %}
+  {% if _SESSION.savedDices is defined %} 
+
+    {% for value in _SESSION.savedDices %}
+      {% set nameOfValue = nameOfValue - 1  %} <!-- för att byta namn på värdet, kan ej ha samma namn -->
+      <input type="checkbox" name= {{ nameOfValue }}  value = {{value}} ></i>
+    {% endfor %}
+    {% endif %}
+
+</div>
+<input class="subbtn" type="submit" name="kasta" value = "KASTA">
+  </form>
+  </div>
