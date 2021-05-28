@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Dice;
 
+use App\Entity\Yatzy;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
 
@@ -22,8 +23,11 @@ class Players
 
     public function getNextPlayer($nr): int
     {
-        
-        return $this->players[$nr];
+        if (isset($this->players[$nr])) {
+            return $this->players[$nr];
+        } else {
+            return $this->players[0];
+        }
     }
 
     

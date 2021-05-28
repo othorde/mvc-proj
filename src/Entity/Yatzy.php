@@ -136,6 +136,7 @@ class Yatzy
 
     public function setEttor(?int $ettor): self
     {
+       
         $this->ettor = $ettor;
 
         return $this;

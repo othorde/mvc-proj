@@ -14,12 +14,12 @@ use function Mos\Functions\{
 
 class YatzyGame extends DiceHand
 {
-     public ?int $sum;
+    use ScoreTrait;
+
+    public ?int $sum;
     public ?int $whatRound = 0;
-   /*  public ?int $roundValue;  */
     public ?int $playerTurn = 0;
     public ?int $whatThrow = 0;
-    public array $arrOfDice;
 
     public function __construct($nrOfDices, $sum, $roundValue, $nrOfPlayers)
     {
@@ -49,8 +49,8 @@ class YatzyGame extends DiceHand
 
     public function setRound($changeRound): void {
         if ($this->whatThrow % 3 == 0 && $this->whatThrow != 0) {
-            //$this->setThrow(0);
             $this->whatRound = $this->whatRound + 1;
+            
 
         } if ($changeRound == 1) {
             $this->whatRound = $this->whatRound + 1;
@@ -63,32 +63,38 @@ class YatzyGame extends DiceHand
     }
 
     public function getPlayerTurn(): int {
-        
+        echo("GETPLAYERTURN");
         return $this->playerTurn;
     }
 
     public function setPlayerTurn($changeRound): void {
-        
-        if ($changeRound == 1) {
-            $this->playerTurn = $this->playerTurn + 1;
-        }
-
-        if ($this->whatThrow % 3 == 0) {
-
-            $this->playerTurn = $this->playerTurn + 1;
-
-        } 
-        if ($this->playerTurn = $this->nrOfPlayers) {
-            $this->playerTurn = 0;
+        if ($this->whatThrow == 3) {
+            echo("HÄR 11");
+            if ($this->playerTurn == $this->nrOfPlayers) {
+                $this->playerTurn = 0;
+                echo("HÄR 22");
+            } else {
+            $this->playerTurn += 1;
+            }
+        } else if ($changeRound == 1) {
+            if ($this->playerTurn + 1 == $this->nrOfPlayers) {
+                $this->playerTurn = 0;    
+            } else {
+                $this->playerTurn += 1;
+            }
         }
     }
 
     public function getSavedAndOnHandDice(): array {
-        $savedDices = $_SESSION["savedDices"];
-        $valueOnHandNotSaved = $this->getLastRollWithoutSum();
+        if (isset($_SESSION["savedDices"])) {
+            $savedDices = $_SESSION["savedDices"];
+            $valueOnHandNotSaved = $this->getLastRollWithoutSum();
 
-        array_push($this->arrOfDice, $valueOnHandNotSaved, $savedDices);
-        return $this->arrOfDice;
+            foreach ($savedDices as $value){
+                array_push($valueOnHandNotSaved, intval($value));
+            }
+        }
+        return $valueOnHandNotSaved;
     }
 
 
@@ -168,7 +174,7 @@ class YatzyGame extends DiceHand
         return $this->nrOfDie2ThrowNext;
     }
 
-    public function getIfThrow(): bool { /*räknar hur många tärningar som ska kastas */
+    public function getIfThrow(): bool { /* Om tärningarna kastas */
 
        if (isset($_POST["kasta"]) && $_POST["kasta"] == "KASTA") {
            return true;
@@ -177,12 +183,12 @@ class YatzyGame extends DiceHand
        }
     }
 
-    public function getIfSave(): bool { /*räknar hur många tärningar som ska kastas */
+    public function getIfSave(): bool { /*  Om tärningarna sparas */
 
         if (isset($_POST["save"]) && $_POST["save"] == "SPARA RESULTAT") {
             return true;
         } else {
          return false;
         }
-     }
+    }
 }

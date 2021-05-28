@@ -9,23 +9,24 @@
         <div class = "prestable"><p>Välj nedan var och vilka tärningar du vill spara.Efter dina 3 kast måste du dock välja annars kommer datorn att stryka slumpmässigt.
             Kryssa i rutan där du vill spara resultatet och sedan på knappen spara resultat för att spara. </p> </div>
         <td> Namn </td>
-        <td>Ettor <input type="radio" class="checkmark" name= "1"  value = " Ettor"></i> </td>
-        <td>Tvåor <input type="radio" class="checkmark" name= "1"  value = "tvar "></i> </td>
-        <td>Treor <input type="radio" class="checkmark" name= "1"  value = "treor "></i></td>
-        <td>Fyror <input type="radio" class="checkmark" name= "1"  value = "fyror "></i></td>
-        <td>Femmor <input type="radio" class="checkmark" name= "1"  value = "femmor "></i></td>
-        <td>Sexor <input type="radio" class="checkmark" name= "1"  value = "sexor "></i></td>
+        <td>ID  </td>
 
-        <td>Bonus <input type="radio" class="checkmark" name=  "1"  value = "bonus "></i></td>
-        <td>Par <input type="radio" class="checkmark" name=  "1"  value = "par "></i></td>
-        <td>Två-par <input type="radio" class="checkmark" name=  "1"  value = "parpar "></i></td>
-        <td>Tretal <input type="radio" class="checkmark" name=  "1"  value = "tretal "></i></td>
-        <td>Fyrtal <input type="radio" class="checkmark" name=  "1"  value = "fyrtal "></i></td>
-        <td>Straight <input type="radio" class="checkmark" name=  "1"  value = "straight "></i></td>
-        <td>Stor-Straight <input type="radio" class="checkmark" name=  "1"  value = "sstraight "></i></td>
-        <td>Kåk <input type="radio" class="checkmark" name=  "1"  value = "kak "></i></td>
-        <td>Chans <input type="radio" class="checkmark" name=  "1"  value = "chans "></i></td>
-        <td>Yatzy <input type="radio" class="checkmark" name=  "1"  value = "yatzy "></i></td>
+        <td>Ettor <input type="radio" class="checkmark" name= "1"  value = 1></i> </td>
+        <td>Tvåor <input type="radio" class="checkmark" name= "1"  value = 2></i> </td>
+        <td>Treor <input type="radio" class="checkmark" name= "1"  value = 3></i></td>
+        <td>Fyror <input type="radio" class="checkmark" name= "1"  value = 4></i></td>
+        <td>Femmor <input type="radio" class="checkmark" name= "1"  value = 5></i></td>
+        <td>Sexor <input type="radio" class="checkmark" name= "1"  value = 6></i></td>
+
+        <td>Par <input type="radio" class="checkmark" name=  "1"  value = 8></i></td>
+        <td>Två-par <input type="radio" class="checkmark" name=  "1"  value = 9></i></td>
+        <td>Tretal <input type="radio" class="checkmark" name=  "1"  value = 10></i></td>
+        <td>Fyrtal <input type="radio" class="checkmark" name=  "1"  value = 11></i></td>
+        <td>Straight <input type="radio" class="checkmark" name=  "1"  value = 12></i></td>
+        <td>Stor-Straight <input type="radio" class="checkmark" name=  "1"  value = 13></i></td>
+        <td>Kåk <input type="radio" class="checkmark" name=  "1"  value = 14></i></td>
+        <td>Chans <input type="radio" class="checkmark" name=  "1"  value = 15></i></td>
+        <td>Yatzy <input type="radio" class="checkmark" name=  "1"  value = 16></i></td>
 
         <input type="submit" name="save" value = "SPARA RESULTAT">
     </form> 
@@ -33,7 +34,10 @@
 
     {% for all in yatzy %}
     <tr>
+
         <td>{{ all.name }} </td>
+        <td>{{ all.id }} </td>
+
         <td>{{ all.ettor }}</td>
         <td>{{ all.tvaor }}</td>
         <td>{{ all.treor }}</td>

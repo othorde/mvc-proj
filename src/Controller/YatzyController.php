@@ -36,6 +36,7 @@ class YatzyController extends AbstractController
             'title' => "Home",
         ]);
     }
+
     /**
     * @Route("/create/yatzy", name="create_yatzy")
     * @Method({"GET", "POST"})
@@ -69,24 +70,28 @@ class YatzyController extends AbstractController
      */
     public function show(): Response
     {
+
         $yatzy = $this->findAll();  //SPARAR DB VÄRDENA I YATZY
         $arrOfId = [];
-
+        $repository = $this->getDoctrine()->getRepository(Yatzy::class);
+    
         foreach ($yatzy as $nameAndId) {
-            array_push($arrOfId, $nameAndId->getId());  //SPARAR NER ID I ARRAY
+            array_push($arrOfId, $nameAndId->getId());
         }
 
         $players = new Players($arrOfId); //SKAPAR SPELARE
         $getAllId = $players->getAllIdPlayers(); // RETUNERAR ALLA SPELARE (ID)
-        $nrOfPlayers = count($getAllId); // räknar ut hur många spelare som ska spela
+        $nrOfPlayers = count($getAllId); // kollar hur många spelare som ska spela
 
 
         if (!isset($_SESSION)) { /* första rundan */
+            $this->firstRound();
             session_start();    //startar session
             echo("FÖRSTA RUNDAN");
             $nrOfDice = 5; 
-            $game = new YatzyGame($nrOfDice, 0, 0, 0, $nrOfPlayers); //sätter antal tärningar till 5 och spelare till antal spelare
+            $game = new YatzyGame($nrOfDice, 0, 0, $nrOfPlayers); //sätter antal tärningar till 5 och spelare till antal spelare
             $_SESSION["yatzygame"] = $game; //sparar spelet i session
+
             $game->setRound(0); //sätter första rundan till 0
             $graphDice = ""; //nedan är för att jag måste initiera variablerna
             $getLastRoll = 0;
@@ -111,16 +116,13 @@ class YatzyController extends AbstractController
 
             $nrOfDie2ThrowNext= $game->countNrOfDieToThrow();
             $game->setNrOfDice($nrOfDie2ThrowNext);
-
+   
 
             $getThrow = $game->getThrow();
             $playerTurn = $game->getPlayerTurn();
             $getRound = $game->getRound();
 
-            echo("KASTA");
-            echo($getThrow);
-
-            echo("SPELARE". $game->getPlayerTurn());
+            echo("SPELARE". $playerTurn);
 
             $returnMess = $game->returnMess();
 
@@ -131,7 +133,6 @@ class YatzyController extends AbstractController
             $checkScore = $game->checkScore();
 
         } else if ($game->getIfSave()) {
-            echo("SAVE");
             $graphDice = "";
             $getLastRoll = 0;
             $nrOfDie2ThrowNext = "";
@@ -144,12 +145,25 @@ class YatzyController extends AbstractController
             $game->setRound(1);
             $getThrow = $game->getThrow();
             $playerTurn = $game->getPlayerTurn();
+            
             $nextPlayer = $players->getNextPlayer($playerTurn);
+            $id = $nextPlayer - 1;
+            //$arrOfDices = $game->getSavedAndOnHandDice();
+            //$this->update($id, $arrOfDices, $_POST);
+            if (!isset($_POST[1])) {
+                $returnMess = "AJAJ, du måste fylla i var du vill spara";
+            } else {
+                $game->setValue2SaveFromPost($_POST);
+                $game->setPlayerId($id);
+                $RES = $game->defineWhereToSendValue();
+                var_dump($RES);
+                $repository->setValue($RES);
+                $game->setPlayerTurn(0);
+                $playerTurn = $game->getPlayerTurn();
+                $nextPlayer = $players->getNextPlayer($playerTurn);
+            }
         }
 
-        var_dump($_SESSION);
-        var_dump($_POST);
-        var_dump("ARRAT", $game->getSavedAndOnHandDice());
 
         return $this->render('yatzyTable.html.twig', [
             'yatzy' => $yatzy,
@@ -187,22 +201,12 @@ class YatzyController extends AbstractController
         return $this->yatzy;
     }
 
-    public function update(int $id): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($id);
 
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
-        }
+    public function firstRound(): array {
+        $this->yatzy = $this->getDoctrine()
+        ->getRepository(Yatzy::class)
+        ->findAll();
 
-        $product->setName('New product name!');
-        $entityManager->flush();
-
-        return $this->redirectToRoute('product_show', [
-            'id' => $product->getId()
-        ]);
+        return $this->yatzy;
     }
 }

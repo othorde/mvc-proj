@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Yatzy|null findOneBy(array $criteria, array $orderBy = null)
  * @method Yatzy[]    findAll()
  * @method Yatzy[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Yatzy[]    findAllGreaterThanPrice(int $res)
  */
 class YatzyRepository extends ServiceEntityRepository
 {
@@ -20,59 +21,26 @@ class YatzyRepository extends ServiceEntityRepository
     }
 
 
-
-   public function findAllnames(): array
+    /**
+     * @return Yatzy[]
+     */
+    public function setValue($res): int
     {
+        $score = strval($res[0]);
+        $id = strval($res[1]);
+        $que = $res[2];
+
         $entityManager = $this->getEntityManager();
-        $price = 0;
         $query = $entityManager->createQuery(
-            'SELECT p
-            FROM App\Entity\Yatzy p
-            WHERE p.name and p.id
-           '
-        )->setParameter('price', $price);
+            $que
+        );
+        $que = "";
+        $query->setParameter('id', strval($id));
+        $query->setParameter('score', strval($score));
 
-        // returns an array of Product objects
-        return $query->getResult();
+        return $query->execute();
     }
+    
 
-
-
-
-
-
-
-
-
-
-
-
-    // /**
-    //  * @return Yatzy[] Returns an array of Yatzy objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('y')
-            ->andWhere('y.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('y.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Yatzy
-    {
-        return $this->createQueryBuilder('y')
-            ->andWhere('y.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
+
