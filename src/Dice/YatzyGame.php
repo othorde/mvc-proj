@@ -15,24 +15,26 @@ use function Mos\Functions\{
 class YatzyGame extends DiceHand
 {
     use ScoreTrait;
+    use PlayersTrait;
+
 
     public ?int $sum;
     public ?int $whatRound = 0;
     public ?int $playerTurn = 0;
     public ?int $whatThrow = 0;
 
-    public function __construct($nrOfDices, $sum, $roundValue, $nrOfPlayers)
+    public function __construct($nrOfDices, $sum, $roundValue)
     {
         $this->sum = $sum;
         $this->roundValue = $roundValue;
-        $this->nrOfPlayers = $nrOfPlayers;
+        //$this->nrOfPlayers = $nrOfPlayers;
 
         parent::__construct($nrOfDices);
     }
 
     public function setThrow($number): void {
-        
-       
+
+
         if ($this->getThrow() === 3) {
             $this->whatThrow = 0;
         } else {
@@ -62,28 +64,20 @@ class YatzyGame extends DiceHand
         return $this->whatRound;
     }
 
-    public function getPlayerTurn(): int {
-        echo("GETPLAYERTURN");
-        return $this->playerTurn;
+    public function endGame(): string {
+        $nrOfRoundsPerPlayer = 15;
+        $totalNrOfRounds = ($this->getNumberOfPlayers() * $nrOfRoundsPerPlayer);
+        if (($totalNrOfRounds + 1) == $this->whatRound) {
+            $this->endGame = "Spelet är slut. Ditt highscore har sparats!";
+            $_SESSION["endgame"] = "endgame";
+        } else {
+            $this->endGame = "Runda " . $this->whatRound."/".$totalNrOfRounds;
+        }
+        return $this->endGame;
     }
 
-    public function setPlayerTurn($changeRound): void {
-        if ($this->whatThrow == 3) {
-            echo("HÄR 11");
-            if ($this->playerTurn == $this->nrOfPlayers) {
-                $this->playerTurn = 0;
-                echo("HÄR 22");
-            } else {
-            $this->playerTurn += 1;
-            }
-        } else if ($changeRound == 1) {
-            if ($this->playerTurn + 1 == $this->nrOfPlayers) {
-                $this->playerTurn = 0;    
-            } else {
-                $this->playerTurn += 1;
-            }
-        }
-    }
+
+
 
     public function getSavedAndOnHandDice(): array {
         if (isset($_SESSION["savedDices"])) {

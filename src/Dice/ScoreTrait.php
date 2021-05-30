@@ -23,15 +23,14 @@ trait ScoreTrait
         $this->postValue = intval($postValue[1]);
     }
 
-    public function getPlayerId(): int
+     public function getPlayerId(): int // denna hjälper bara till att ge ett id till varje funktion i detta tratit
     {
-        return $this->playerId;
+        $playerNumber = $this->getPlayerTurn(); // nummer på spelaren som spelar 0-4'
+        $specificPlayerId = $this->getSpecificPlayer($playerNumber); // id på spelaren som spelar
+        return $specificPlayerId;
     }
 
-    public function setPlayerId($playerId): void
-    {
-        $this->playerId = $playerId;
-    }
+
 
     /* funktionen skickar värden vidare beroende på hur stort det är */
     public function defineWhereToSendValue(): array

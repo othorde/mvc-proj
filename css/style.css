@@ -184,3 +184,12 @@ font-size: 1.2em;
 
 }
  
+
+.resulttable2 {
+    box-sizing: border-box;
+    position: center;
+    width:300px;
+    padding:10px;
+    font-size: 1em;
+    padding-left: 90px;
+}

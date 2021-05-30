@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% block body %}
+
+    <div class = "text">
+        <h1>Highscore</h1>
+    <p> Man kan spela 1 till 4 personer.</p>
+    <p>Skriv in namnen på de spelare som ska vara med. </p>
+    <p> Tryck sedan på spela yatzy för att spela spelet! </p>
+
+   
+    
+    <div class="resulttable2">
+
+        <table>
+     
+        <tbody>
+        <tr>
+            <td> Namn </td>
+            <td>ID  </td>
+            <td>Poäng </td>
+        </tr>
+    
+        {% set counter = (highscore|length / 3) %}
+
+        {% for i in 1.. { counter } %}
+
+        <tr>
+           <td>{{ highscore.name }} </td>
+            <td>{{ highscore.id }} </td>
+            <td>{{ highscore.score }}</td> 
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+    </div>
+
+    {% endblock %}

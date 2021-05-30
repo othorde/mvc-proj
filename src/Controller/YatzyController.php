@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Dice\Players;
 use App\Entity\Yatzy;
 use App\Dice\YatzyGame;
+use App\Entity\Highscore;
+
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\TextUI\Help;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,11 +56,30 @@ class YatzyController extends AbstractController
         } else {
             session_start();
         }
-
+       
         foreach ($_POST as &$value) {
             $yatzy = new Yatzy();
             if (strlen($value) > 0) {
                 $yatzy->setName($value);
+                $yatzy->setEttor(0);
+                $yatzy->setTvaor(0);
+                $yatzy->setTreor(0);
+                $yatzy->setFyror(0);
+                $yatzy->setFemmor(0);
+                $yatzy->setSexor(0);
+                $yatzy->setSumma(0);
+                $yatzy->setBonus(0);
+                $yatzy->setPar(0);
+                $yatzy->setParpar(0);
+                $yatzy->setTretal(0);
+                $yatzy->setFyrtal(0);
+                $yatzy->setKak(0);
+                $yatzy->setChans(0);
+                $yatzy->setSstraight(0);
+                $yatzy->setStraight(0);
+                $yatzy->setYatzy(0);
+                $yatzy->setTotalt(0);
+
                 $entityManager->persist($yatzy);
                 $entityManager->flush();
             }
@@ -73,15 +95,8 @@ class YatzyController extends AbstractController
 
         $yatzy = $this->findAll();  //SPARAR DB VÄRDENA I YATZY
         $arrOfId = [];
-        $repository = $this->getDoctrine()->getRepository(Yatzy::class);
-    
-        foreach ($yatzy as $nameAndId) {
-            array_push($arrOfId, $nameAndId->getId());
-        }
-
-        $players = new Players($arrOfId); //SKAPAR SPELARE
-        $getAllId = $players->getAllIdPlayers(); // RETUNERAR ALLA SPELARE (ID)
-        $nrOfPlayers = count($getAllId); // kollar hur många spelare som ska spela
+        $repositoryHighscore = $this->getDoctrine()->getRepository(Highscore::class);     
+        $repository = $this->getDoctrine()->getRepository(Yatzy::class);     
 
 
         if (!isset($_SESSION)) { /* första rundan */
@@ -89,7 +104,10 @@ class YatzyController extends AbstractController
             session_start();    //startar session
             echo("FÖRSTA RUNDAN");
             $nrOfDice = 5; 
-            $game = new YatzyGame($nrOfDice, 0, 0, $nrOfPlayers); //sätter antal tärningar till 5 och spelare till antal spelare
+            $game = new YatzyGame($nrOfDice, 0, 0); //sätter antal tärningar till 5 och spelare till antal spelare
+            $game->setAllPlayers($yatzy);
+            $hej = $game->getAllPlayers();
+            var_dump($hej);
             $_SESSION["yatzygame"] = $game; //sparar spelet i session
 
             $game->setRound(0); //sätter första rundan till 0
@@ -101,7 +119,8 @@ class YatzyController extends AbstractController
             $savedDicesGraphical = "";
             $getThrow = 0;
             $getRound = "";
-            $nextPlayer = $players->getNextPlayer(0); // första rundan måste det vara spelare 0 tur
+            $playerNumber = $game->getPlayerTurn(); // nummer på spelaren som spelar 0-4'
+            $specificPlayerId = $game->getSpecificPlayer($playerNumber); // id på spelaren som spelar
         }
 
         $game = $_SESSION["yatzygame"]; //SPARAR SPELET I GAME (OM DET ÄR RUNDA TVÅ ELLER MER)
@@ -111,7 +130,6 @@ class YatzyController extends AbstractController
             $game->roll();
             $game->setThrow(1);
 
-            $game->setPlayerTurn(0);
             $game->setRound(0);
 
             $nrOfDie2ThrowNext= $game->countNrOfDieToThrow();
@@ -119,18 +137,17 @@ class YatzyController extends AbstractController
    
 
             $getThrow = $game->getThrow();
-            $playerTurn = $game->getPlayerTurn();
             $getRound = $game->getRound();
 
-            echo("SPELARE". $playerTurn);
-
+ 
             $returnMess = $game->returnMess();
 
-            $nextPlayer = $players->getNextPlayer($playerTurn);
             $getLastRoll = $game->getLastRollWithoutSum();
             $savedDicesGraphical = $game->savedDices();
             $graphDice = $game->getGraphicalDices(); // hämtar värden skriver ut
             $checkScore = $game->checkScore();
+            $playerNumber = $game->getPlayerTurn(); // nummer på spelaren som spelar 0-4'
+            $specificPlayerId = $game->getSpecificPlayer($playerNumber); // id på spelaren som spelar
 
         } else if ($game->getIfSave()) {
             $graphDice = "";
@@ -141,29 +158,37 @@ class YatzyController extends AbstractController
             $savedDicesGraphical = "";
             $getRound = "";
             $game->setThrow(0);
-            $game->setPlayerTurn(1);
             $game->setRound(1);
             $getThrow = $game->getThrow();
-            $playerTurn = $game->getPlayerTurn();
+
+            $playerNumber = $game->getPlayerTurn(); // nummer på spelaren som spelar 0-4'
+            $specificPlayerId = $game->getSpecificPlayer($playerNumber); // id på spelaren som spelar
+            //$nextPlayer = $game->getNextPlayer(0);
             
-            $nextPlayer = $players->getNextPlayer($playerTurn);
-            $id = $nextPlayer - 1;
-            //$arrOfDices = $game->getSavedAndOnHandDice();
-            //$this->update($id, $arrOfDices, $_POST);
             if (!isset($_POST[1])) {
                 $returnMess = "AJAJ, du måste fylla i var du vill spara";
             } else {
                 $game->setValue2SaveFromPost($_POST);
-                $game->setPlayerId($id);
                 $RES = $game->defineWhereToSendValue();
                 var_dump($RES);
                 $repository->setValue($RES);
-                $game->setPlayerTurn(0);
-                $playerTurn = $game->getPlayerTurn();
-                $nextPlayer = $players->getNextPlayer($playerTurn);
+                $repository->checkSum($RES[1]);
+                $repository->checkTotal($RES[1]);
+                $score = $repository->checkBonus($RES[1]);
+                $repository->setBonus($RES[1], $score);
+              
+                $game->setPlayerTurn();
+
             }
         }
 
+        $endGame=$game->endGame();
+        $resAndName = $repository->getEndGameResult();
+        $repositoryHighscore->setHighscore($resAndName);
+
+        if (isset($_SESSION["endgame"])) {
+            $repositoryHighscore->setHighscore($resAndName);
+        }
 
         return $this->render('yatzyTable.html.twig', [
             'yatzy' => $yatzy,
@@ -177,15 +202,31 @@ class YatzyController extends AbstractController
             'checkScore' => $checkScore,
             '_SESSION' => $_SESSION,
             '_POST' => $_POST,
-            'nextPlayer' => $nextPlayer,
+            'nextPlayer' => $specificPlayerId,
+            'endGame' => $endGame,
         ]);
     }
 
 
+    /**
+     * @Route("/highscore", name="highscore")
+     * @Method({"GET"})
+     */
+    public function highscore(): Response
+    {
+        $repositoryHighscore = $this->getDoctrine()->getRepository(Highscore::class);     
+
+        $highscore2 = $repositoryHighscore->highscores();
+
+        return $this->render('highscore.html.twig', [
+            'highscore' => $highscore2
+        ]);
+    }
+
     public function delete()
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $yatzy = $entityManager->getRepository(yatzy::class)->findAll();
+        $yatzy = $entityManager->getRepository(Yatzy::class)->findAll();
 
         for ($x = 0; $x < count($yatzy); $x++) {
             $entityManager->remove($yatzy[$x]);
@@ -200,6 +241,7 @@ class YatzyController extends AbstractController
 
         return $this->yatzy;
     }
+
 
 
     public function firstRound(): array {
