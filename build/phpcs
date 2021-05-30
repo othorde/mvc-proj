@@ -1,11 +1,12 @@
 
 FILE: C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php
 -------------------------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
+FOUND 2 ERRORS AFFECTING 2 LINES
 -------------------------------------------------------------------------------------
- 53 | ERROR | [x] Expected 1 space(s) after closing parenthesis; found 0
+  53 | ERROR | [x] Expected 1 space(s) after closing parenthesis; found 0
+ 167 | ERROR | [x] Expected 0 spaces before closing bracket; 2 found
 -------------------------------------------------------------------------------------
-PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 -------------------------------------------------------------------------------------
 
 
@@ -19,5 +20,5 @@ FOUND 2 ERRORS AFFECTING 2 LINES
 PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
 --------------------------------------------------------------------------------
 
-Time: 6.24 secs; Memory: 8MB
+Time: 7.02 secs; Memory: 8MB
 

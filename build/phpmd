@@ -22,6 +22,8 @@ C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.ph
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:20	Avoid using short method names like Version20210529155218::up(). The configured minimum method name length is 3.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:20	Avoid unused parameters such as '$schema'.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:26	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php:90	The method show() has 100 lines of code. Current threshold is set to 100. Avoid really long methods.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php:93	Avoid unused local variables such as '$repositoryHighscore'.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\PlayersTrait.php:69	The method setPlayerTurn uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\ScoreTrait.php:69	The method valueOneToSix uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\ScoreTrait.php:75	The method valueSixToEnd() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
