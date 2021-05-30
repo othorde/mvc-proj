@@ -36,36 +36,32 @@ class HighscoreRepository extends ServiceEntityRepository
     }
     */
 
-    
-    public function setHighscore($resAndName): void {
-
+    public function setHighscore($resAndName): void
+    {
         $newarr = [];
         foreach ($resAndName as $value => $id) {
             //var_dump(array_values($id));
+            $value;
             $scoreAndName = array_values($id);
             array_push($newarr, $scoreAndName[0]);
             array_push($newarr, $scoreAndName[1]);
         }
 
         $len = (count($scoreAndName) / 2);
-        echo($len);
-        for ($x=0; $x<=$len; $x++) {
+        //echo($len);
+        for ($x = 0; $x <= $len; $x++) {
             $entityManager = $this->getEntityManager();
             $query = $entityManager->createQuery(
-            'UPDATE App\Entity\Highscore h
-            SET h.name = :names,
-            h.score = :score
-            '
-           );
+                'UPDATE App\Entity\Highscore h
+                SET h.name = :names,
+                h.score = :score
+                '
+            );
             $query->setParameter('names', strval($scoreAndName[1]));
             $query->setParameter('score', strval($scoreAndName[0]));
             $query->execute();
         }
-
-       
-
-        var_dump($scoreAndName);
-
+        //var_dump($scoreAndName);
     }
 
     public function highscores(): array
@@ -76,28 +72,11 @@ class HighscoreRepository extends ServiceEntityRepository
             'SELECT h.name, h.score, h.id
             FROM App\Entity\Highscore h'
         );
-
-
-
         $bla = $query->getResult();
 
         foreach ($bla as $elem) {
             $hej = $elem;
-        } 
-
-
+        }
         return $hej;
     }
-
-
-
-
-/* 
-    public function highscore(): array {
-        $this->highscore = $this->getDoctrine()
-        ->getRepository(Highscore::class)
-        ->findAll();
-
-        return $this->highscore;
-    } */
 }

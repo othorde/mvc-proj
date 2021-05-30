@@ -17,18 +17,12 @@
         <tbody>
         <tr>
             <td> Namn </td>
-            <td>ID  </td>
             <td>Poäng </td>
         </tr>
-    
-        {% set counter = (highscore|length / 3) %}
-
-        {% for i in 1.. { counter } %}
-
+        {% for all in highscore %}
         <tr>
-           <td>{{ highscore.name }} </td>
-            <td>{{ highscore.id }} </td>
-            <td>{{ highscore.score }}</td> 
+            <td>{{ all.name }} </td>
+            <td>{{ all.score }} </td>
         </tr>
         {% endfor %}
 

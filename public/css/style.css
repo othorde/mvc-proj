@@ -1,4 +1,4 @@
-@import"https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro"; 
+@import"https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro";
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* för ett o två */
 
@@ -13,7 +13,6 @@ nav {
    justify-content:space-between;
    font-size: 2.7rem;
    overflow-y: none;
-
 }
 
 p {
@@ -52,7 +51,7 @@ body {
 
 form.form2 {
     float: left;
-    display:inline; 
+    display:inline;
     width: 49%;
     top: 0;
 
@@ -129,15 +128,13 @@ p.dice-utf8 {
 table {
     border-collapse: collapse;
     width: 80em;
-    
 }
 
 th, td {
-box-sizing: border-box;
-text-align: left;
-padding: 8px;
-margin: 20px;
-
+    box-sizing: border-box;
+    text-align: left;
+    padding: 8px;
+    margin: 20px;
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
@@ -160,7 +157,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 input[type=text] {
     padding: 10px;
-    margin:10px 0; 
+    margin:10px 0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     border-radius:10px;
 }
@@ -278,7 +275,6 @@ input {
     justify-content: center;
     overflow-y: none;
 }
- 
 
 footer {
     position: relative;

@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Yatzy|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Yatzy|null find($idd, $lockMode = null, $lockVersion = null)
  * @method Yatzy|null findOneBy(array $criteria, array $orderBy = null)
  * @method Yatzy[]    findAll()
  * @method Yatzy[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
@@ -28,7 +28,7 @@ class YatzyRepository extends ServiceEntityRepository
     {
         echo($res[2]);
         $score = strval($res[0]);
-        $id = strval($res[1]);
+        $idd = strval($res[1]);
         $que = $res[2];
 
         $entityManager = $this->getEntityManager();
@@ -36,40 +36,38 @@ class YatzyRepository extends ServiceEntityRepository
             $que
         );
         $que = "";
-        $query->setParameter('id', strval($id));
+        $query->setParameter('id', strval($idd));
         $query->setParameter('score', strval($score));
 
         return $query->execute();
     }
 
 
-    public function checkSum($id): int
+    public function checkSum($idd): int
     {
          $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
-
-        'UPDATE App\Entity\Yatzy y 
-        SET y.summa = y.ettor + y.tvaor + y.treor + y.fyror + y.femmor + y.sexor WHERE y.id = :id'
-       );
-        $query->setParameter('id', strval($id));
+            'UPDATE App\Entity\Yatzy y 
+            SET y.summa = y.ettor + y.tvaor + y.treor + y.fyror + y.femmor + y.sexor WHERE y.id = :id'
+        );
+        $query->setParameter('id', strval($idd));
 
         return $query->execute();
-    } 
+    }
 
-    public function checkTotal($id): int
+    public function checkTotal($idd): int
     {
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
-
-        'UPDATE App\Entity\Yatzy y 
-        SET y.totalt = y.ettor + y.tvaor + y.treor + y.fyror + y.femmor + y.sexor + y.bonus + y.par + y.parpar + y.tretal + y.fyrtal + y.straight + y.kak + y.sstraight + y.chans + y.yatzy WHERE y.id = :id'
-       );
-        $query->setParameter('id', strval($id));
+            'UPDATE App\Entity\Yatzy y 
+            SET y.totalt = y.ettor + y.tvaor + y.treor + y.fyror + y.femmor + y.sexor + y.bonus + y.par + y.parpar + y.tretal + y.fyrtal + y.straight + y.kak + y.sstraight + y.chans + y.yatzy WHERE y.id = :id'
+        );
+        $query->setParameter('id', strval($idd));
         echo("HEJ");
         return $query->execute();
     }
-    
-    public function checkBonus($id): int
+
+    public function checkBonus($idd): int
     {
         $entityManager = $this->getEntityManager();
 
@@ -77,7 +75,7 @@ class YatzyRepository extends ServiceEntityRepository
             'SELECT y.summa
             FROM App\Entity\Yatzy y
             WHERE y.id = :id'
-        )->setParameter('id', $id);
+        )->setParameter('id', $idd);
 
         $hej =  $query->getResult();
 
@@ -85,14 +83,15 @@ class YatzyRepository extends ServiceEntityRepository
             $blo = (array_values($value));
         }
         $hej = $blo[0];
-        if($hej === null) {
+        if ($hej === null) {
             $hej = 0;
         }
         return $hej;
     }
 
 
-    public function setBonus($id, $score): int {
+    public function setBonus($idd, $score): int
+    {
         $bonus = 0;
         if ($score > 50) {
             $bonus = 50;
@@ -100,10 +99,10 @@ class YatzyRepository extends ServiceEntityRepository
 
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
-        'UPDATE App\Entity\Yatzy y 
-        SET y.bonus = :bonus WHERE y.id = :id'
-       );
-        $query->setParameter('id', strval($id));
+            'UPDATE App\Entity\Yatzy y
+            SET y.bonus = :bonus WHERE y.id = :id'
+        );
+        $query->setParameter('id', strval($idd));
         $query->setParameter('bonus', strval($bonus));
 
         return $query->execute();
@@ -120,8 +119,6 @@ class YatzyRepository extends ServiceEntityRepository
 
         $hej = $query->getResult();
 
-        return $hej;
+        return ($hej);
     }
-   
 }
-

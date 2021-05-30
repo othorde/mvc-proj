@@ -1,4 +1,4 @@
-@import"https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro"; 
+@import"https://fonts.googleapis.com/css?family=Merriweather|Source+Sans+Pro";
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* för ett o två */
 
@@ -82,7 +82,7 @@ padding:20px;
 
 input[type=text] {
 padding: 10px;
-margin:10px 0; 
+margin:10px 0;
 box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 border-radius:10px;
 
@@ -183,7 +183,6 @@ font-size: 1.2em;
     overflow-y: none;
 
 }
- 
 
 .resulttable2 {
     box-sizing: border-box;

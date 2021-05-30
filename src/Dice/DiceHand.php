@@ -7,7 +7,6 @@ namespace App\Dice;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseInterface;
 
-
 /**
  * Class Dice.
  */

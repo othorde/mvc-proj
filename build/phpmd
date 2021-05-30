@@ -18,18 +18,14 @@ C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210524100550.ph
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210524100550.php:20	Avoid using short method names like Version20210524100550::up(). The configured minimum method name length is 3.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210524100550.php:20	Avoid unused parameters such as '$schema'.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210524100550.php:30	Avoid unused parameters such as '$schema'.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\HelloWorldController.php:17	The method yatzy() has 123 lines of code. Current threshold is set to 100. Avoid really long methods.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php:52	The method createYatzyTable uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php:172	Avoid using App\Controller\count() function in for loops.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Controller\YatzyController.php:186	Avoid variables with short names like $id. Configured minimum length is 3.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\Players.php:23	Avoid variables with short names like $nr. Configured minimum length is 3.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\Players.php:23	Avoid variables with short names like $nr. Configured minimum length is 3.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php:37	The method setThrow uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php:69	Avoid assigning values to variables in if clauses and the like (line '80', column '13').
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php:136	The method returnMess uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php:159	The method countNrOfDieToThrow uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php:169	The method getIfThrow uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
-C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\YatzyGame.php:178	The method getIfSave uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:20	Avoid using short method names like Version20210529155218::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:20	Avoid using short method names like Version20210529155218::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\migrations\Version20210529155218.php:26	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\PlayersTrait.php:69	The method setPlayerTurn uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\ScoreTrait.php:69	The method valueOneToSix uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Dice\ScoreTrait.php:75	The method valueSixToEnd() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Entity\Highscore.php:18	Avoid variables with short names like $id. Configured minimum length is 3.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Entity\Yatzy.php:11	The class Yatzy has 20 fields. Consider redesigning Yatzy to keep the number of fields under 15.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Entity\Yatzy.php:18	Avoid variables with short names like $id. Configured minimum length is 3.
 C:\Users\Othor\dbwebb-kurser\mvc\me\proj\app\src\Kernel.php:14	Avoid assigning values to variables in if clauses and the like (line '22', column '27').
