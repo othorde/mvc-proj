@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Dice;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Test cases for the controller Sample.
  */
-class ControllerDiceTest extends TestCase
+class DiceTest extends TestCase
 {
     /**
      * Try to create the controller class.
@@ -18,7 +18,7 @@ class ControllerDiceTest extends TestCase
     public function testCreateTheControllerClass()
     {
         $controller = new Dice();
-        $this->assertInstanceOf("\Mos\Dice\Dice", $controller);
+        $this->assertInstanceOf("\App\Dice\Dice", $controller);
     }
 
     /**

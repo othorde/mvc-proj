@@ -40,7 +40,6 @@ class HighscoreRepository extends ServiceEntityRepository
     {
         $newarr = [];
         foreach ($resAndName as $value => $id) {
-            //var_dump(array_values($id));
             $value;
             $scoreAndName = array_values($id);
             array_push($newarr, $scoreAndName[0]);
@@ -48,7 +47,6 @@ class HighscoreRepository extends ServiceEntityRepository
         }
 
         $len = (count($scoreAndName) / 2);
-        //echo($len);
         for ($x = 0; $x <= $len; $x++) {
             $entityManager = $this->getEntityManager();
             $query = $entityManager->createQuery(

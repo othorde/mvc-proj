@@ -143,11 +143,9 @@ class YatzyGame extends DiceHand
     }
 
     public function getFirstRound(): bool/* startar spelet och lägger till i throws */
-    { 
+    {
 
-        if (isset($_SESSION) && $_SESSION["start"] == "start")
-        {
-            echo("START");
+        if (isset($_SESSION) && $_SESSION["start"] == "start") {
             $_SESSION["start"] = "";
             return true;
         }

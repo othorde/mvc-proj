@@ -50,7 +50,7 @@ class YatzyController extends AbstractController
         if (isset($_SESSION)) {
             session_destroy();
             session_start();
-        } else if (!isset($_SESSION)){
+        } else if (!isset($_SESSION)) {
             session_start();
         }
 
@@ -90,17 +90,14 @@ class YatzyController extends AbstractController
     public function show(): Response
     {
         $yatzy = $this->findAll();  //SPARAR DB VÄRDENA I YATZY
-        $repositoryHighscore = $this->getDoctrine()->getRepository(Highscore::class);
         $repository = $this->getDoctrine()->getRepository(Yatzy::class);
         if (!isset($_SESSION)) { /* första rundan */
             $this->firstRound();
             session_start();    //startar session
-            echo("FÖRSTA RUNDAN");
             $nrOfDice = 5;
             $game = new YatzyGame($nrOfDice, 0, 0); //sätter antal tärningar till 5 och spelare till antal spelare
             $game->setAllPlayers($yatzy);
             $hej = $game->getAllPlayers();
-            var_dump($hej);
             $_SESSION["yatzygame"] = $game; //sparar spelet i session
             $game->setRound(0); //sätter första rundan till 0
             $graphDice = ""; //nedan är för att jag måste initiera variablerna
@@ -149,6 +146,7 @@ class YatzyController extends AbstractController
             } else if (isset($_POST[1])) {
                 $game->setValue2SaveFromPost($_POST);
                 $res = $game->defineWhereToSendValue();
+                $res[1] = $game->getPlayerId();// la till för testernas skull ta bort om ej fungerar
                 $repository->setValue($res);
                 $repository->checkSum($res[1]);
                 $repository->checkTotal($res[1]);
@@ -164,7 +162,7 @@ class YatzyController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $highscore = new Highscore();
 
-            foreach ($resAndName as $value  ) {
+            foreach ($resAndName as $value) {
                 $highscore->setScore($value['totalt']);
                 $highscore->setName($value['name']);
                 $entityManager->persist($highscore);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Dice;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Test cases for the controller Sample.
  */
-class ControllerDiceHandTest extends TestCase
+class DiceHandTest extends TestCase
 {
     /**
      * Try to create the controller class.
@@ -18,7 +18,7 @@ class ControllerDiceHandTest extends TestCase
     public function testCreateTheControllerClass()
     {
         $controller = new DiceHand(5);
-        $this->assertInstanceOf("\Mos\Dice\DiceHand", $controller);
+        $this->assertInstanceOf("\App\Dice\DiceHand", $controller);
     }
 
     /* testar metod dicehandroll genom att kolla att jag kan hämta värden i getlastroll
@@ -29,7 +29,7 @@ class ControllerDiceHandTest extends TestCase
     public function testDiceHandRoll()
     {
         $controller = new DiceHand(5);
-        $this->assertInstanceOf("\Mos\Dice\DiceHand", $controller);
+        $this->assertInstanceOf("\App\Dice\DiceHand", $controller);
         $voidMethod = $controller->roll();
         $this->assertNull($voidMethod);
         $value = $controller->getLastRoll();
@@ -39,7 +39,7 @@ class ControllerDiceHandTest extends TestCase
     public function testGetLastRollWithoutSum()
     {
         $controller = new DiceHand(5);
-        $this->assertInstanceOf("\Mos\Dice\DiceHand", $controller);
+        $this->assertInstanceOf("\App\Dice\DiceHand", $controller);
         $controller->roll();
         $arrayOfDiceValues = $controller->getLastRollWithoutSum();
         $this->assertIsArray($arrayOfDiceValues);
@@ -50,24 +50,11 @@ class ControllerDiceHandTest extends TestCase
     public function testGetGraphicalDices()
     {
         $controller = new DiceHand(5);
-        $this->assertInstanceOf("\Mos\Dice\DiceHand", $controller);
+        $this->assertInstanceOf("\App\Dice\DiceHand", $controller);
         $controller->roll();
         $arrOfGraphDieValue = $controller->getGraphicalDices();
         $this->assertIsArray($arrOfGraphDieValue);
         $this->assertEquals(count($arrOfGraphDieValue), 5);
-    }
-
-    /* kontrollerar att metoden ger mig summan som måste vara i intervallet 3-30 då 5*6 = 30 och 1*5 = 5 */
-
-    public function testGetSum()
-    {
-        $controller = new DiceHand(5);
-        $this->assertInstanceOf("\Mos\Dice\DiceHand", $controller);
-        $controller->roll();
-
-        $getSum = $controller->getSum();
-        $this->assertLessThanOrEqual(30, $getSum);
-        $this->assertGreaterThanOrEqual(5, $getSum);
     }
 
     /* kontrollerar att jag kan ändra värdet mha setNrOfDice till 2 från 5 */

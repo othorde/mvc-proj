@@ -26,7 +26,6 @@ class YatzyRepository extends ServiceEntityRepository
      */
     public function setValue($res): int
     {
-        echo($res[2]);
         $score = strval($res[0]);
         $idd = strval($res[1]);
         $que = $res[2];
@@ -63,7 +62,6 @@ class YatzyRepository extends ServiceEntityRepository
             SET y.totalt = y.ettor + y.tvaor + y.treor + y.fyror + y.femmor + y.sexor + y.bonus + y.par + y.parpar + y.tretal + y.fyrtal + y.straight + y.kak + y.sstraight + y.chans + y.yatzy WHERE y.id = :id'
         );
         $query->setParameter('id', strval($idd));
-        echo("HEJ");
         return $query->execute();
     }
 

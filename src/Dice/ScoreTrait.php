@@ -33,7 +33,6 @@ trait ScoreTrait
     public function defineWhereToSendValue(): array
     {
         $value = $this->getValue2SaveFromPost();
-        echo($value);
 
         if ($value <= 6) {
             return $this->valueOneToSix($value);
@@ -50,12 +49,11 @@ trait ScoreTrait
         $ress = [3];
         foreach ($diceHand as $die) {
             if ($die === $value) {
-                echo($value);
                 $sumOfDie += $die;
             }
         }
         $ress[0] = $sumOfDie;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         if ($value == 1) {
             $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.ettor = :score WHERE y.id = :id';
         } else if ($value == 2) {
@@ -121,7 +119,7 @@ trait ScoreTrait
             }
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.par = :score WHERE y.id = :id';
 
         return $ress;
@@ -139,7 +137,7 @@ trait ScoreTrait
             $result = ($diceHand[1] == $diceHand[2] and $diceHand[3] == $diceHand[4]);
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.parpar = :score WHERE y.id = :id';
 
         return $ress;
@@ -158,7 +156,7 @@ trait ScoreTrait
             $result = $diceHand[2] + $diceHand[3] + $diceHand[4];
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.tretal = :score WHERE y.id = :id';
 
         return $ress;
@@ -174,7 +172,7 @@ trait ScoreTrait
             $result = $diceHand[1] + $diceHand[2] + $diceHand[3] + $diceHand[4];
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.fyrtal = :score WHERE y.id = :id';
 
         return $ress;
@@ -196,7 +194,7 @@ trait ScoreTrait
             $xxx += 1;
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.straight = :score WHERE y.id = :id';
 
         return $ress;
@@ -217,7 +215,7 @@ trait ScoreTrait
             $xxx += 1;
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.sstraight = :score WHERE y.id = :id';
 
         return $ress;
@@ -225,6 +223,7 @@ trait ScoreTrait
 
     public function checkIfKak($diceHand)
     {
+        $result = 0;
         $ress = [3];
         if ($diceHand[0] == $diceHand[1] and $diceHand[1] == $diceHand[2]) {
             if ($diceHand[3] == $diceHand[4]) {
@@ -236,7 +235,7 @@ trait ScoreTrait
             }
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.kak = :score WHERE y.id = :id';
         return $ress;
     }
@@ -247,7 +246,7 @@ trait ScoreTrait
         $result = 0;
         $result = array_sum($diceHand);
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.chans = :score WHERE y.id = :id';
         return $ress;
     }
@@ -264,7 +263,7 @@ trait ScoreTrait
             } */
         }
         $ress[0] = $result;
-        $ress[1] = $this->getPlayerId();
+        //$ress[1] = $this->getPlayerId();
         $ress[2] = 'UPDATE App\Entity\Yatzy y SET y.yatzy = :score WHERE y.id = :id';
         return $ress;
     }
