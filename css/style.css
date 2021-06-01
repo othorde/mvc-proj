@@ -42,9 +42,7 @@ body {
 
 
 
-a.active {
-    color: #0074d9;
-}
+
 
 
 .text {
@@ -192,3 +190,24 @@ font-size: 1.2em;
     font-size: 1em;
     padding-left: 90px;
 }
+
+
+a {
+    color: #3CBC8D;
+  }
+
+/* unvisited link */
+a:link {
+    color: none;
+  }
+  
+/* visited link */
+a:visited {
+color: none;
+}
+
+/* mouse over link */
+a:hover {
+color: hotpink;
+}
+

@@ -4,11 +4,7 @@ Akronym olto20
 
 
 Applikationen är det klassiska spelet Yatzy. Det är slutprojektet för kursen MVC som läses på Blekinge Tekniska Högskola.
-Applikationen är skrivit i Php och symfony som ramverk. SQLlite används som databas. Programmet kan installeras genom att ladda ner från github, packa sedan upp programmet och kör det genom XAMPP, apache lokalt. 
-
-
-<!-- 
-ag hade beskrivit vilka krav på miljön som finns, t.ex. att PHP, composer och webbserver ska finnas. Sen gått vidare till de kommandon som behövs för att sätta upp miljön, t.ex git clone,  -->
+Applikationen är skrivit i Php och symfony som ramverk. SQLlite används som databas. Programmet kan installeras genom att ladda ner från github  packa sedan upp programmet och kör det genom XAMPP, apache lokalt. Php, composer och en webbserver måste finnas.
 
 I detta yatsyspel kan du spela 1-4 personer. Välj först antal spelare genom att skriva in namn på de som ska vara med. 
 Därefter är det bara att spela spelet! 

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -168,7 +169,7 @@ class YatzyController extends AbstractController
                 $entityManager->flush();
             }
         }
-        return $this->render('yatzyTable.html.twig', [
+        return $this->render('yatzytable.html.twig', [
             'yatzy' => $yatzy,
             'nrOfDie2ThrowNext' => $nrOfDie2ThrowNext,
             'whatThrow' => $getThrow ,
