@@ -1,0 +1,34 @@
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511122932.php:20	Avoid using short method names like Version20210511122932::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511122932.php:20	Avoid using short method names like Version20210511122932::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511122932.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511122932.php:26	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124502.php:20	Avoid using short method names like Version20210511124502::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124502.php:20	Avoid using short method names like Version20210511124502::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124502.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124502.php:26	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124832.php:20	Avoid using short method names like Version20210511124832::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124832.php:20	Avoid using short method names like Version20210511124832::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124832.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210511124832.php:30	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524082059.php:20	Avoid using short method names like Version20210524082059::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524082059.php:20	Avoid using short method names like Version20210524082059::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524082059.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524082059.php:26	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524100550.php:20	Avoid using short method names like Version20210524100550::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524100550.php:20	Avoid using short method names like Version20210524100550::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524100550.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210524100550.php:30	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210529155218.php:20	Avoid using short method names like Version20210529155218::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210529155218.php:20	Avoid using short method names like Version20210529155218::up(). The configured minimum method name length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210529155218.php:20	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\migrations\Version20210529155218.php:26	Avoid unused parameters such as '$schema'.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Dice\PlayersTrait.php:69	The method setPlayerTurn uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Dice\ScoreTrait.php:67	The method valueOneToSix uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Dice\ScoreTrait.php:73	The method valueSixToEnd() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Entity\Highscore.php:18	Avoid variables with short names like $id. Configured minimum length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Entity\Yatzy.php:11	The class Yatzy has 20 fields. Consider redesigning Yatzy to keep the number of fields under 15.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Entity\Yatzy.php:18	Avoid variables with short names like $id. Configured minimum length is 3.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Kernel.php:14	Avoid assigning values to variables in if clauses and the like (line '22', column '27').
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\src\Kernel.php:27	Avoid assigning values to variables in if clauses and the like (line '34', column '27').
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\test\Dice\ScoreTraitTest.php:14	The class ScoreTraitTest has 11 public methods. Consider refactoring ScoreTraitTest to keep number of public methods under 10.
+C:\Users\Othor\dbwebb-kurser\mvc\me\proj\test\Dice\YatzyGameTest.php:13	The class YatzyGameTest has 13 public methods. Consider refactoring YatzyGameTest to keep number of public methods under 10.
