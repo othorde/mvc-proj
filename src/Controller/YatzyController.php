@@ -97,7 +97,6 @@ class YatzyController extends AbstractController
             $nrOfDice = 5;
             $game = new YatzyGame($nrOfDice, 0, 0); //sätter antal tärningar till 5 och spelare till antal spelare
             $game->setAllPlayers($yatzy);
-            $hej = $game->getAllPlayers();
             $_SESSION["yatzygame"] = $game; //sparar spelet i session
             $game->setRound(0); //sätter första rundan till 0
             $graphDice = ""; //nedan är för att jag måste initiera variablerna
@@ -199,6 +198,15 @@ class YatzyController extends AbstractController
             'highscore' => $highscore2
         ]);
     }
+
+    public function yatzy(): Response
+    {
+
+        return $this->render('yatzy.html.twig', [
+            'message' => "Hello yatzy",
+        ]);
+    }
+
 
     public function delete()
     {

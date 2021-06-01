@@ -1,10 +1,14 @@
 Av Oliver T Andersson
 Akronym olto20
 
-Förklara din applikation projekt i en README.md, dels vad applikationen handlar om, som en liten manual. Dels hur man kan installera den utifrån dess GitHub/GitLab repo. Gör din README snygg och lägg till en representativ bild.
+
 
 Applikationen är det klassiska spelet Yatzy. Det är slutprojektet för kursen MVC som läses på Blekinge Tekniska Högskola.
-Applikationen är skrivit i Php och symfony som ramverk. SQLlite används som databas. Programmet kan installeras genom att.........
+Applikationen är skrivit i Php och symfony som ramverk. SQLlite används som databas. Programmet kan installeras genom att ladda ner från github, packa sedan upp programmet och kör det genom XAMPP, apache lokalt. 
+
+
+<!-- 
+ag hade beskrivit vilka krav på miljön som finns, t.ex. att PHP, composer och webbserver ska finnas. Sen gått vidare till de kommandon som behövs för att sätta upp miljön, t.ex git clone,  -->
 
 I detta yatsyspel kan du spela 1-4 personer. Välj först antal spelare genom att skriva in namn på de som ska vara med. 
 Därefter är det bara att spela spelet! 
@@ -17,3 +21,4 @@ Första spelaren börjar genom att kasta tärningen. Spelaren kan sedan välja a
 [![Build Status](https://www.travis-ci.com/othorde/mvc-proj.svg?branch=main)](https://www.travis-ci.com/othorde/mvc-proj)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/othorde/mvc-proj/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/othorde/mvc-proj/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/othorde/mvc-proj/badges/build.png?b=main)](https://scrutinizer-ci.com/g/othorde/mvc-proj/build-status/main)
+
